@@ -1,0 +1,10 @@
+
+<ion-tabs (ionChange)="tapChange($event)" [selectedIndex]="tabindex">
+  <ion-tab [root]="tab1Root" tabTitle="{{'FEED' | lang}}" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="{{'SEARCH' | lang}}" tabIcon="information-circle"></ion-tab>
+  <!-- <ion-tab [root]="tab5Root" tabTitle="Chat" tabIcon="contacts" *ngIf="total_count == 0"></ion-tab> -->
+  <ion-tab [root]="tab3Root" tabTitle="{{'CHAT' | lang}}" tabIcon="contacts" 
+  [tabBadge]="total_count > 0 ? total_count:null" 
+  tabBadgeStyle="danger"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="{{'ACCOUNT' | lang}}" tabIcon="home"></ion-tab>
+</ion-tabs>

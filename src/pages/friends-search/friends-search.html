@@ -1,0 +1,50 @@
+
+<ion-header>
+  <ion-navbar color="primary">  
+    <ion-buttons start (click)="close()">
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="ios-arrow-dropleft-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Friend's</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-row class="block" margin-bottom>
+    <ion-col no-padding>
+      <ion-item no-lines class="new_search">
+        <ion-input type="text" (keyup)="search($event)" [(ngModel)]="search_val"
+        placeholder="{{'SEARCHFRIEND' | lang}}"></ion-input>
+        <button ion-button clear small item-end>
+        <img src="assets/imgs/new/icons8-search-client-100.png" style="width:24px;">
+      </button>
+      </ion-item>
+    </ion-col>
+    <!-- <ion-searchbar (ionInput)="search($event)" [(ngModel)]="search_val"
+    placeholder="Search Friend.."></ion-searchbar> -->
+  </ion-row>
+
+  <ion-item *ngFor="let b of buddies">
+    <ion-avatar item-start class="avtar_item">
+      <img [src]="b?.profile">
+    </ion-avatar>
+    <ion-label><strong>{{b.first_name}} ,</strong>
+      <span *ngIf="b.address" style="white-space: normal;">{{b.address}}
+        <span *ngIf="!b.address" style="white-space: normal;">{{'NOLOCTION' | lang}}</span>
+      </span></ion-label>
+
+    <!-- <h2>{{b.first_name}}</h2>
+    <p *ngIf="b.address">{{b.address}}</p>
+    <p *ngIf="!b.address">(No Location)</p> -->
+    <ion-checkbox [(ngModel)]="b.is_check" item-end
+                (ionChange)="checkend(b.is_check,i)"></ion-checkbox>
+                <!-- <input type="checkbox" item-end (ionChange)="checkend(b.is_check,i)"> -->
+  </ion-item>
+
+  <div class="noDatadiv" *ngIf="buddies.length==0">
+    <ion-icon name="ios-search-outline"></ion-icon>
+    <p>No data found.</p>
+  </div>
+
+</ion-content>
